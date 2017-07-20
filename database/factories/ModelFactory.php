@@ -34,3 +34,26 @@ $factory->define(App\Preference::class, function ($faker) {
         }
     ];
 });
+
+
+$factory->define(App\Studio::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'name' => $faker->name,
+        'founded_at' => $faker->date($format = 'Y-m-d', $max = 'now')
+    ];
+
+});
+
+
+$factory->define(App\Movie::class, function ($faker) {
+    return [
+        'name' => $faker->city,
+        'date_released' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'studio_id' => rand(1,6)
+        // 'user_id' => function () {
+        //   return App\Studio::find(rand(0,5))->id;
+        // }
+    ];
+});

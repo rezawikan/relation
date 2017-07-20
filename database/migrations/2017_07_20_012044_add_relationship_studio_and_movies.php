@@ -15,7 +15,7 @@ class AddRelationshipStudioAndMovies extends Migration
     {
         Schema::table('movies', function (Blueprint $table) {
             $table->integer('studio_id')->unsigned()->change();
-            $table->foreign('studio_id')->references('id')->on('movies')
+            $table->foreign('studio_id')->references('id')->on('studios')
           ->onUpdate('cascade')->onDelete('cascade');
         });
     }
