@@ -52,8 +52,17 @@ $factory->define(App\Movie::class, function ($faker) {
         'name' => $faker->city,
         'date_released' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'studio_id' => rand(1,6)
-        // 'user_id' => function () {
-        //   return App\Studio::find(rand(0,5))->id;
-        // }
+    ];
+});
+
+
+
+
+$factory->define(App\Course::class, function ($faker) {
+  $rooms = array('large','medium','small', 'extra');
+    return [
+        'title' => $faker->city,
+        'units' => rand(1,20),
+        'room' => array_rand($rooms, 1)
     ];
 });
