@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Movie;
+use App\OneToMany\Movie;
 
 class Studio extends Model
 {
@@ -13,6 +13,6 @@ class Studio extends Model
 
     public function movies()
     {
-        return $this->hasMany('App\Movie');
+        return $this->hasMany('App\OneToMany\Movie');
     }
 }

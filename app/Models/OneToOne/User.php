@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Preference;
+use App\OneToOne\Preference;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
@@ -36,6 +36,6 @@ class User extends Authenticatable
 
     public function preference()
     {
-        return $this->hasOne('App\Preference');
+        return $this->hasOne('App\OneToOne\Preference');
     }
 }

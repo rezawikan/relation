@@ -12,7 +12,7 @@ class Student extends Model
 
     public function courses()
     {
-        return $this->belongsToMany('App\Course');
+        return $this->belongsToMany('App\ManyToMany\Course');
         // $this->belongsToMany('App\Course')->withTimestamps()->withPivot('nama_kolom')
     }
 }
