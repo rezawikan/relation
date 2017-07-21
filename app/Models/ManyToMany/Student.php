@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    // Indicates if the model should be timestamped.
     public $timestamps = false;
 
+    // The attributes that are mass assignable.
     protected $fillable = ['name','date_of_birth','gender'];
 
     public function courses()

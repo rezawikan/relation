@@ -8,19 +8,10 @@ use App\OneToOne\User;
 class Preference extends Model
 {
 
-  /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
+    // Indicates if the model should be timestamped.
     public $timestamps = false;
 
-    /**
-   * The attributes that are mass assignable.
-   *
-   * @var array
-   */
-
+    // The attributes that are mass assignable.
     protected $fillable = [
       'user_id','country', 'currency', 'subscribe_mailing_list'
     ];
