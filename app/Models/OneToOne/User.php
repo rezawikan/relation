@@ -1,10 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Models\OneToOne;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\OneToOne\Preference;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable

@@ -3,6 +3,9 @@
 namespace App\Models\HasManyThrough;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\HasManyThrough\Artist;
+use App\Models\HasManyThrough\Song;
+
 
 class Album extends Model
 {
@@ -14,11 +17,11 @@ class Album extends Model
 
     public function artist()
     {
-        return $this->belongsTo('App\Models\HasManyThrough\Artist');
+        return $this->belongsTo(Artist::class);
     }
 
     public function artists()
     {
-        return $this->hasMany('App\Models\HasManyThrough\Song');
+        return $this->hasMany(Song::class);
     }
 }

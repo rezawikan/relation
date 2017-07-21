@@ -1,9 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models\ManyToMany;
 
 use Illuminate\Database\Eloquent\Model;
-use App\OneToMany\Movie;
 
 class Studio extends Model
 {

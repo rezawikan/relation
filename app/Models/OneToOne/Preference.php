@@ -1,9 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models\OneToOne;
 
 use Illuminate\Database\Eloquent\Model;
-use App\OneToOne\User;
 
 class Preference extends Model
 {
