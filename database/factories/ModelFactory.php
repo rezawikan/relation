@@ -66,3 +66,30 @@ $factory->define(App\Course::class, function ($faker) {
         'room' => array_rand($rooms, 1)
     ];
 });
+
+$factory->define(App\Student::class, function ($faker) {
+    return [
+        'name' => $faker->name,
+        'date_of_birth' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'gender' => $faker->randomElement($array = array ('male','female'))
+    ];
+});
+
+
+
+$CourseStudentFactory = function ($faker) use (&$CourseStudentFactory) {
+
+    $ids = [
+        'course_id' => $faker->randomElement(App\Course::pluck('id')->toArray()),
+        'student_id' => $faker->randomElement(App\Student::pluck('id')->toArray())
+    ];
+
+    if (App\CourseStudent::where('course_id', $ids['course_id'])->where('student_id', $ids['student_id'])->first() == null) {
+        return $ids;
+    } else {
+        return $CourseStudentFactory();
+    }
+
+};
+
+$factory->define(App\CourseStudent::class, $CourseStudentFactory);
