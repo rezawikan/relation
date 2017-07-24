@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\OneToOne\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -99,18 +99,42 @@ $factory->define(App\Models\HasManyThrough\Artist::class, function (Faker\Genera
   ];
 });
 
-$factory->define(App\Models\HasManyThrough\Album::class, function ($faker){
-  return [
+$factory->define(App\Models\HasManyThrough\Album::class, function ($faker) {
+    return [
     'artist_id' => $faker->randomElement(App\Models\HasManyThrough\Artist::pluck('id')->toArray()),
     'title' => $faker->streetName,
     'released' => $faker->date($format = 'Y-m-d', $max = 'now')
   ];
 });
 
-$factory->define(App\Models\HasManyThrough\Song::class, function ($faker){
-  return [
+$factory->define(App\Models\HasManyThrough\Song::class, function ($faker) {
+    return [
     'album_id' => $faker->randomElement(App\Models\HasManyThrough\Album::pluck('id')->toArray()),
     'title' => $faker->company,
     'length' => $faker->time($format = 'H:i:s', $max = 'now')
+  ];
+});
+
+$factory->define(App\Models\Polymorphic\Status::class, function ($faker) {
+    return[
+    'content' => $faker->name,
+    'user_id' => $faker->randomElement(App\Models\OneToOne\User::pluck('id')->toArray())
+  ];
+});
+
+$factory->define(App\Models\Polymorphic\Photo::class, function ($faker) {
+    return[
+    'title' => $faker->name,
+    'filename' => $faker->fileExtension,
+    'user_id' => $faker->randomElement(App\Models\OneToOne\User::pluck('id')->toArray())
+  ];
+});
+
+$factory->define(App\Models\Polymorphic\Comment::class, function ($faker) {
+    return[
+    'content' => $faker->name,
+    'user_id' => $faker->randomElement(App\Models\OneToOne\User::pluck('id')->toArray()),
+    'commentable_id' => rand(1, 20),
+    'commentable_type' => rand(0, 1) == 1 ? 'App\Models\Polymorphic\Comment' : 'App\Models\Polymorphic\Photo'
   ];
 });
