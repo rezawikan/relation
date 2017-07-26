@@ -138,3 +138,11 @@ $factory->define(App\Models\Polymorphic\Comment::class, function ($faker) {
     'commentable_type' => rand(0, 1) == 1 ? 'App\Models\Polymorphic\Comment' : 'App\Models\Polymorphic\Photo'
   ];
 });
+
+$factory->define(App\Models\Self\Person::class,  function($faker){
+  return [
+    'name' => $faker->name,
+    'birth_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+    'parent_id' => rand(1,50)
+  ];
+});
